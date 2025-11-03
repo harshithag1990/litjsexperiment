@@ -1,0 +1,28 @@
+{
+  "name": "mylit-element",
+  "private": false,
+  "version": "0.1.1",
+  "type": "module",
+  "main": "dist/my-element.es.js",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "module": "dist/my-element.es.js",
+  "types": "dist/my-element.d.ts",
+  "exports": {
+    ".": "./dist/my-element.es.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.1.7"
+  }
+}
