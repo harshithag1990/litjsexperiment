@@ -4,7 +4,7 @@ import { css as w, LitElement as P, html as U } from "lit";
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const C = (i) => (t, e) => {
+const O = (i) => (t, e) => {
   e !== void 0 ? e.addInitializer((() => {
     customElements.define(i, t);
   })) : customElements.define(i, t);
@@ -14,10 +14,10 @@ const C = (i) => (t, e) => {
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const d = globalThis, m = d.ShadowRoot && (d.ShadyCSS === void 0 || d.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, v = Symbol(), _ = /* @__PURE__ */ new WeakMap();
-let O = class {
+const d = globalThis, m = d.ShadowRoot && (d.ShadyCSS === void 0 || d.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, S = Symbol(), g = /* @__PURE__ */ new WeakMap();
+let C = class {
   constructor(t, e, s) {
-    if (this._$cssResult$ = !0, s !== v) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+    if (this._$cssResult$ = !0, s !== S) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = t, this.t = e;
   }
   get styleSheet() {
@@ -25,7 +25,7 @@ let O = class {
     const e = this.t;
     if (m && t === void 0) {
       const s = e !== void 0 && e.length === 1;
-      s && (t = _.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && _.set(e, t));
+      s && (t = g.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && g.set(e, t));
     }
     return t;
   }
@@ -33,13 +33,13 @@ let O = class {
     return this.cssText;
   }
 };
-const A = (i) => new O(typeof i == "string" ? i : i + "", void 0, v), M = (i, t) => {
+const A = (i) => new C(typeof i == "string" ? i : i + "", void 0, S), M = (i, t) => {
   if (m) i.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
   else for (const e of t) {
     const s = document.createElement("style"), r = d.litNonce;
     r !== void 0 && s.setAttribute("nonce", r), s.textContent = e.cssText, i.appendChild(s);
   }
-}, g = m ? (i) => i : (i) => i instanceof CSSStyleSheet ? ((t) => {
+}, E = m ? (i) => i : (i) => i instanceof CSSStyleSheet ? ((t) => {
   let e = "";
   for (const s of t.cssRules) e += s.cssText;
   return A(e);
@@ -49,10 +49,10 @@ const A = (i) => new O(typeof i == "string" ? i : i + "", void 0, v), M = (i, t)
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const { is: R, defineProperty: x, getOwnPropertyDescriptor: j, getOwnPropertyNames: z, getOwnPropertySymbols: k, getPrototypeOf: T } = Object, u = globalThis, E = u.trustedTypes, D = E ? E.emptyScript : "", L = u.reactiveElementPolyfillSupport, c = (i, t) => i, p = { toAttribute(i, t) {
+const { is: R, defineProperty: x, getOwnPropertyDescriptor: j, getOwnPropertyNames: z, getOwnPropertySymbols: T, getPrototypeOf: D } = Object, u = globalThis, _ = u.trustedTypes, k = _ ? _.emptyScript : "", L = u.reactiveElementPolyfillSupport, c = (i, t) => i, p = { toAttribute(i, t) {
   switch (t) {
     case Boolean:
-      i = i ? D : null;
+      i = i ? k : null;
       break;
     case Object:
     case Array:
@@ -108,13 +108,13 @@ class h extends HTMLElement {
   }
   static _$Ei() {
     if (this.hasOwnProperty(c("elementProperties"))) return;
-    const t = T(this);
+    const t = D(this);
     t.finalize(), t.l !== void 0 && (this.l = [...t.l]), this.elementProperties = new Map(t.elementProperties);
   }
   static finalize() {
     if (this.hasOwnProperty(c("finalized"))) return;
     if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(c("properties"))) {
-      const e = this.properties, s = [...z(e), ...k(e)];
+      const e = this.properties, s = [...z(e), ...T(e)];
       for (const r of s) this.createProperty(r, e[r]);
     }
     const t = this[Symbol.metadata];
@@ -133,8 +133,8 @@ class h extends HTMLElement {
     const e = [];
     if (Array.isArray(t)) {
       const s = new Set(t.flat(1 / 0).reverse());
-      for (const r of s) e.unshift(g(r));
-    } else t !== void 0 && e.push(g(t));
+      for (const r of s) e.unshift(E(r));
+    } else t !== void 0 && e.push(E(t));
     return e;
   }
   static _$Eu(t, e) {
@@ -287,7 +287,7 @@ const q = { attribute: !0, type: String, converter: p, reflect: !1, hasChanged: 
   }
   throw Error("Unsupported decorator location: " + s);
 };
-function S(i) {
+function v(i) {
   return (t, e) => typeof e == "object" ? N(i, t, e) : ((s, r, o) => {
     const n = r.hasOwnProperty(o);
     return r.constructor.createProperty(o, s), n ? Object.getOwnPropertyDescriptor(r, o) : void 0;
@@ -304,17 +304,9 @@ let l = class extends P {
   }
   render() {
     return U`
-      <slot></slot>
-      <div class="card">
-        <button @click=${this._onClick} part="button">
-          count is ${this.count}
-        </button>
-      </div>
-      <p class="read-the-docs">${this.docsHint}</p>
+      <h1>Testing the panel</h1>
+      
     `;
-  }
-  _onClick() {
-    this.count++;
   }
 };
 l.styles = w`
@@ -389,13 +381,13 @@ l.styles = w`
     }
   `;
 $([
-  S()
+  v()
 ], l.prototype, "docsHint", 2);
 $([
-  S({ type: Number })
+  v({ type: Number })
 ], l.prototype, "count", 2);
 l = $([
-  C("my-element")
+  O("my-element")
 ], l);
 export {
   l as MyElement
