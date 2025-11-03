@@ -9,7 +9,7 @@ export default defineConfig({
       formats: ['es', 'umd']
     },
     rollupOptions: {
-      external: ['lit'],
+      // external: ['lit'],
       output: {
         globals: {
           lit: 'lit'
