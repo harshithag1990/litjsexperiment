@@ -24,7 +24,6 @@ export class MyElement extends LitElement {
   render() {
     return html`
       <h1>Testing the panel</h1>
-      
     `
   }
 
@@ -103,6 +102,15 @@ export class MyElement extends LitElement {
       }
     }
   `
+}
+
+// At the end of my-element.ts, after the class definition
+export { LitElement } from 'lit';
+
+// Also expose it on the global MyElement object
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).MyElement = (globalThis as any).MyElement || {};
+  (globalThis as any).MyElement.LitElement = LitElement;
 }
 
 declare global {

@@ -3,7 +3,7 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const H = globalThis, k = H.ShadowRoot && (H.ShadyCSS === void 0 || H.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, D = Symbol(), q = /* @__PURE__ */ new WeakMap();
+const M = globalThis, k = M.ShadowRoot && (M.ShadyCSS === void 0 || M.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, D = Symbol(), q = /* @__PURE__ */ new WeakMap();
 let tt = class {
   constructor(t, e, s) {
     if (this._$cssResult$ = !0, s !== D) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
@@ -32,7 +32,7 @@ const nt = (r) => new tt(typeof r == "string" ? r : r + "", void 0, D), ht = (r,
 }, at = (r, t) => {
   if (k) r.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
   else for (const e of t) {
-    const s = document.createElement("style"), i = H.litNonce;
+    const s = document.createElement("style"), i = M.litNonce;
     i !== void 0 && s.setAttribute("nonce", i), s.textContent = e.cssText, r.appendChild(s);
   }
 }, W = k ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
@@ -45,7 +45,7 @@ const nt = (r) => new tt(typeof r == "string" ? r : r + "", void 0, D), ht = (r,
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const { is: lt, defineProperty: ct, getOwnPropertyDescriptor: dt, getOwnPropertyNames: pt, getOwnPropertySymbols: ut, getPrototypeOf: $t } = Object, N = globalThis, J = N.trustedTypes, ft = J ? J.emptyScript : "", _t = N.reactiveElementPolyfillSupport, E = (r, t) => r, M = { toAttribute(r, t) {
+const { is: lt, defineProperty: ct, getOwnPropertyDescriptor: dt, getOwnPropertyNames: pt, getOwnPropertySymbols: ut, getPrototypeOf: $t } = Object, N = globalThis, J = N.trustedTypes, ft = J ? J.emptyScript : "", _t = N.reactiveElementPolyfillSupport, S = (r, t) => r, T = { toAttribute(r, t) {
   switch (t) {
     case Boolean:
       r = r ? ft : null;
@@ -73,9 +73,9 @@ const { is: lt, defineProperty: ct, getOwnPropertyDescriptor: dt, getOwnProperty
       }
   }
   return e;
-} }, z = (r, t) => !lt(r, t), K = { attribute: !0, type: String, converter: M, reflect: !1, useDefault: !1, hasChanged: z };
+} }, L = (r, t) => !lt(r, t), K = { attribute: !0, type: String, converter: T, reflect: !1, useDefault: !1, hasChanged: L };
 Symbol.metadata ??= Symbol("metadata"), N.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
-let A = class extends HTMLElement {
+let y = class extends HTMLElement {
   static addInitializer(t) {
     this._$Ei(), (this.l ??= []).push(t);
   }
@@ -103,13 +103,13 @@ let A = class extends HTMLElement {
     return this.elementProperties.get(t) ?? K;
   }
   static _$Ei() {
-    if (this.hasOwnProperty(E("elementProperties"))) return;
+    if (this.hasOwnProperty(S("elementProperties"))) return;
     const t = $t(this);
     t.finalize(), t.l !== void 0 && (this.l = [...t.l]), this.elementProperties = new Map(t.elementProperties);
   }
   static finalize() {
-    if (this.hasOwnProperty(E("finalized"))) return;
-    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(E("properties"))) {
+    if (this.hasOwnProperty(S("finalized"))) return;
+    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(S("properties"))) {
       const e = this.properties, s = [...pt(e), ...ut(e)];
       for (const i of s) this.createProperty(i, e[i]);
     }
@@ -172,14 +172,14 @@ let A = class extends HTMLElement {
   _$ET(t, e) {
     const s = this.constructor.elementProperties.get(t), i = this.constructor._$Eu(t, s);
     if (i !== void 0 && s.reflect === !0) {
-      const o = (s.converter?.toAttribute !== void 0 ? s.converter : M).toAttribute(e, s.type);
+      const o = (s.converter?.toAttribute !== void 0 ? s.converter : T).toAttribute(e, s.type);
       this._$Em = t, o == null ? this.removeAttribute(i) : this.setAttribute(i, o), this._$Em = null;
     }
   }
   _$AK(t, e) {
     const s = this.constructor, i = s._$Eh.get(t);
     if (i !== void 0 && this._$Em !== i) {
-      const o = s.getPropertyOptions(i), n = typeof o.converter == "function" ? { fromAttribute: o.converter } : o.converter?.fromAttribute !== void 0 ? o.converter : M;
+      const o = s.getPropertyOptions(i), n = typeof o.converter == "function" ? { fromAttribute: o.converter } : o.converter?.fromAttribute !== void 0 ? o.converter : T;
       this._$Em = i;
       const a = n.fromAttribute(e, o.type);
       this[i] = a ?? this._$Ej?.get(i) ?? a, this._$Em = null;
@@ -188,7 +188,7 @@ let A = class extends HTMLElement {
   requestUpdate(t, e, s) {
     if (t !== void 0) {
       const i = this.constructor, o = this[t];
-      if (s ??= i.getPropertyOptions(t), !((s.hasChanged ?? z)(o, e) || s.useDefault && s.reflect && o === this._$Ej?.get(t) && !this.hasAttribute(i._$Eu(t, s)))) return;
+      if (s ??= i.getPropertyOptions(t), !((s.hasChanged ?? L)(o, e) || s.useDefault && s.reflect && o === this._$Ej?.get(t) && !this.hasAttribute(i._$Eu(t, s)))) return;
       this.C(t, e, s);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
@@ -256,28 +256,28 @@ let A = class extends HTMLElement {
   firstUpdated(t) {
   }
 };
-A.elementStyles = [], A.shadowRootOptions = { mode: "open" }, A[E("elementProperties")] = /* @__PURE__ */ new Map(), A[E("finalized")] = /* @__PURE__ */ new Map(), _t?.({ ReactiveElement: A }), (N.reactiveElementVersions ??= []).push("2.1.1");
+y.elementStyles = [], y.shadowRootOptions = { mode: "open" }, y[S("elementProperties")] = /* @__PURE__ */ new Map(), y[S("finalized")] = /* @__PURE__ */ new Map(), _t?.({ ReactiveElement: y }), (N.reactiveElementVersions ??= []).push("2.1.1");
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const L = globalThis, T = L.trustedTypes, Z = T ? T.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, et = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, st = "?" + f, mt = `<${st}>`, g = document, w = () => g.createComment(""), C = (r) => r === null || typeof r != "object" && typeof r != "function", I = Array.isArray, gt = (r) => I(r) || typeof r?.[Symbol.iterator] == "function", j = `[ 	
-\f\r]`, b = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, F = /-->/g, G = />/g, _ = RegExp(`>|${j}(?:([^\\s"'>=/]+)(${j}*=${j}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Q = /'/g, X = /"/g, it = /^(?:script|style|textarea|title)$/i, At = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), yt = At(1), y = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), Y = /* @__PURE__ */ new WeakMap(), m = g.createTreeWalker(g, 129);
+const z = globalThis, H = z.trustedTypes, Z = H ? H.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, et = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, st = "?" + f, mt = `<${st}>`, g = document, w = () => g.createComment(""), C = (r) => r === null || typeof r != "object" && typeof r != "function", I = Array.isArray, gt = (r) => I(r) || typeof r?.[Symbol.iterator] == "function", j = `[ 	
+\f\r]`, E = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, F = /-->/g, G = />/g, _ = RegExp(`>|${j}(?:([^\\s"'>=/]+)(${j}*=${j}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), Q = /'/g, X = /"/g, it = /^(?:script|style|textarea|title)$/i, yt = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), At = yt(1), v = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), Y = /* @__PURE__ */ new WeakMap(), m = g.createTreeWalker(g, 129);
 function rt(r, t) {
   if (!I(r) || !r.hasOwnProperty("raw")) throw Error("invalid template strings array");
   return Z !== void 0 ? Z.createHTML(t) : t;
 }
 const vt = (r, t) => {
   const e = r.length - 1, s = [];
-  let i, o = t === 2 ? "<svg>" : t === 3 ? "<math>" : "", n = b;
+  let i, o = t === 2 ? "<svg>" : t === 3 ? "<math>" : "", n = E;
   for (let a = 0; a < e; a++) {
     const h = r[a];
     let c, p, l = -1, u = 0;
-    for (; u < h.length && (n.lastIndex = u, p = n.exec(h), p !== null); ) u = n.lastIndex, n === b ? p[1] === "!--" ? n = F : p[1] !== void 0 ? n = G : p[2] !== void 0 ? (it.test(p[2]) && (i = RegExp("</" + p[2], "g")), n = _) : p[3] !== void 0 && (n = _) : n === _ ? p[0] === ">" ? (n = i ?? b, l = -1) : p[1] === void 0 ? l = -2 : (l = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? _ : p[3] === '"' ? X : Q) : n === X || n === Q ? n = _ : n === F || n === G ? n = b : (n = _, i = void 0);
+    for (; u < h.length && (n.lastIndex = u, p = n.exec(h), p !== null); ) u = n.lastIndex, n === E ? p[1] === "!--" ? n = F : p[1] !== void 0 ? n = G : p[2] !== void 0 ? (it.test(p[2]) && (i = RegExp("</" + p[2], "g")), n = _) : p[3] !== void 0 && (n = _) : n === _ ? p[0] === ">" ? (n = i ?? E, l = -1) : p[1] === void 0 ? l = -2 : (l = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? _ : p[3] === '"' ? X : Q) : n === X || n === Q ? n = _ : n === F || n === G ? n = E : (n = _, i = void 0);
     const $ = n === _ && r[a + 1].startsWith("/>") ? " " : "";
-    o += n === b ? h + mt : l >= 0 ? (s.push(c), h.slice(0, l) + et + h.slice(l) + f + $) : h + f + (l === -2 ? a : $);
+    o += n === E ? h + mt : l >= 0 ? (s.push(c), h.slice(0, l) + et + h.slice(l) + f + $) : h + f + (l === -2 ? a : $);
   }
   return [rt(r, o + (r[e] || "<?>") + (t === 2 ? "</svg>" : t === 3 ? "</math>" : "")), s];
 };
@@ -300,7 +300,7 @@ class P {
         if (it.test(i.tagName)) {
           const l = i.textContent.split(f), u = l.length - 1;
           if (u > 0) {
-            i.textContent = T ? T.emptyScript : "";
+            i.textContent = H ? H.emptyScript : "";
             for (let $ = 0; $ < u; $++) i.append(l[$], w()), m.nextNode(), h.push({ type: 2, index: ++o });
             i.append(l[u], w());
           }
@@ -318,11 +318,11 @@ class P {
     return s.innerHTML = t, s;
   }
 }
-function v(r, t, e = r, s) {
-  if (t === y) return t;
+function b(r, t, e = r, s) {
+  if (t === v) return t;
   let i = s !== void 0 ? e._$Co?.[s] : e._$Cl;
   const o = C(t) ? void 0 : t._$litDirective$;
-  return i?.constructor !== o && (i?._$AO?.(!1), o === void 0 ? i = void 0 : (i = new o(r), i._$AT(r, e, s)), s !== void 0 ? (e._$Co ??= [])[s] = i : e._$Cl = i), i !== void 0 && (t = v(r, i._$AS(r, t.values), i, s)), t;
+  return i?.constructor !== o && (i?._$AO?.(!1), o === void 0 ? i = void 0 : (i = new o(r), i._$AT(r, e, s)), s !== void 0 ? (e._$Co ??= [])[s] = i : e._$Cl = i), i !== void 0 && (t = b(r, i._$AS(r, t.values), i, s)), t;
 }
 class bt {
   constructor(t, e) {
@@ -371,7 +371,7 @@ class O {
     return this._$AB;
   }
   _$AI(t, e = this) {
-    t = v(this, t, e), C(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== y && this._(t) : t._$litType$ !== void 0 ? this.$(t) : t.nodeType !== void 0 ? this.T(t) : gt(t) ? this.k(t) : this._(t);
+    t = b(this, t, e), C(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== v && this._(t) : t._$litType$ !== void 0 ? this.$(t) : t.nodeType !== void 0 ? this.T(t) : gt(t) ? this.k(t) : this._(t);
   }
   O(t) {
     return this._$AA.parentNode.insertBefore(t, this._$AB);
@@ -424,11 +424,11 @@ class R {
   _$AI(t, e = this, s, i) {
     const o = this.strings;
     let n = !1;
-    if (o === void 0) t = v(this, t, e, 0), n = !C(t) || t !== this._$AH && t !== y, n && (this._$AH = t);
+    if (o === void 0) t = b(this, t, e, 0), n = !C(t) || t !== this._$AH && t !== v, n && (this._$AH = t);
     else {
       const a = t;
       let h, c;
-      for (t = o[0], h = 0; h < o.length - 1; h++) c = v(this, a[s + h], e, h), c === y && (c = this._$AH[h]), n ||= !C(c) || c !== this._$AH[h], c === d ? t = d : t !== d && (t += (c ?? "") + o[h + 1]), this._$AH[h] = c;
+      for (t = o[0], h = 0; h < o.length - 1; h++) c = b(this, a[s + h], e, h), c === v && (c = this._$AH[h]), n ||= !C(c) || c !== this._$AH[h], c === d ? t = d : t !== d && (t += (c ?? "") + o[h + 1]), this._$AH[h] = c;
     }
     n && !i && this.j(t);
   }
@@ -457,7 +457,7 @@ class wt extends R {
     super(t, e, s, i, o), this.type = 5;
   }
   _$AI(t, e = this) {
-    if ((t = v(this, t, e, 0) ?? d) === y) return;
+    if ((t = b(this, t, e, 0) ?? d) === v) return;
     const s = this._$AH, i = t === d && s !== d || t.capture !== s.capture || t.once !== s.once || t.passive !== s.passive, o = t !== d && (s === d || i);
     i && this.element.removeEventListener(this.name, this, s), o && this.element.addEventListener(this.name, this, t), this._$AH = t;
   }
@@ -473,11 +473,11 @@ class Ct {
     return this._$AM._$AU;
   }
   _$AI(t) {
-    v(this, t);
+    b(this, t);
   }
 }
-const Pt = L.litHtmlPolyfillSupport;
-Pt?.(P, O), (L.litHtmlVersions ??= []).push("3.3.1");
+const Pt = z.litHtmlPolyfillSupport;
+Pt?.(P, O), (z.litHtmlVersions ??= []).push("3.3.1");
 const xt = (r, t, e) => {
   const s = e?.renderBefore ?? t;
   let i = s._$litPart$;
@@ -493,7 +493,7 @@ const xt = (r, t, e) => {
  * SPDX-License-Identifier: BSD-3-Clause
  */
 const B = globalThis;
-class S extends A {
+class A extends y {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
@@ -512,12 +512,12 @@ class S extends A {
     super.disconnectedCallback(), this._$Do?.setConnected(!1);
   }
   render() {
-    return y;
+    return v;
   }
 }
-S._$litElement$ = !0, S.finalized = !0, B.litElementHydrateSupport?.({ LitElement: S });
+A._$litElement$ = !0, A.finalized = !0, B.litElementHydrateSupport?.({ LitElement: A });
 const Ot = B.litElementPolyfillSupport;
-Ot?.({ LitElement: S });
+Ot?.({ LitElement: A });
 (B.litElementVersions ??= []).push("4.2.1");
 /**
  * @license
@@ -534,7 +534,7 @@ const Ut = (r) => (t, e) => {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const Ht = { attribute: !0, type: String, converter: M, reflect: !1, hasChanged: z }, Mt = (r = Ht, t, e) => {
+const Mt = { attribute: !0, type: String, converter: T, reflect: !1, hasChanged: L }, Tt = (r = Mt, t, e) => {
   const { kind: s, metadata: i } = e;
   let o = globalThis.litPropertyMetadata.get(i);
   if (o === void 0 && globalThis.litPropertyMetadata.set(i, o = /* @__PURE__ */ new Map()), s === "setter" && ((r = Object.create(r)).wrapped = !0), o.set(e.name, r), s === "accessor") {
@@ -556,24 +556,23 @@ const Ht = { attribute: !0, type: String, converter: M, reflect: !1, hasChanged:
   throw Error("Unsupported decorator location: " + s);
 };
 function ot(r) {
-  return (t, e) => typeof e == "object" ? Mt(r, t, e) : ((s, i, o) => {
+  return (t, e) => typeof e == "object" ? Tt(r, t, e) : ((s, i, o) => {
     const n = i.hasOwnProperty(o);
     return i.constructor.createProperty(o, s), n ? Object.getOwnPropertyDescriptor(i, o) : void 0;
   })(r, t, e);
 }
-var Tt = Object.defineProperty, Nt = Object.getOwnPropertyDescriptor, V = (r, t, e, s) => {
+var Ht = Object.defineProperty, Nt = Object.getOwnPropertyDescriptor, V = (r, t, e, s) => {
   for (var i = s > 1 ? void 0 : s ? Nt(t, e) : t, o = r.length - 1, n; o >= 0; o--)
     (n = r[o]) && (i = (s ? n(t, e, i) : n(i)) || i);
-  return s && i && Tt(t, e, i), i;
+  return s && i && Ht(t, e, i), i;
 };
-let x = class extends S {
+let x = class extends A {
   constructor() {
     super(...arguments), this.docsHint = "Click on the Vite and Lit logos to learn more", this.count = 0;
   }
   render() {
-    return yt`
+    return At`
       <h1>Testing the panel</h1>
-      
     `;
   }
 };
@@ -657,6 +656,8 @@ V([
 x = V([
   Ut("my-element")
 ], x);
+typeof globalThis < "u" && (globalThis.MyElement = globalThis.MyElement || {}, globalThis.MyElement.LitElement = A);
 export {
+  A as LitElement,
   x as MyElement
 };
