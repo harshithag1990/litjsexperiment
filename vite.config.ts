@@ -7,15 +7,7 @@ export default defineConfig({
       name: 'MyElement',
       fileName: (format) => `my-element.${format}.js`,
       formats: ['es', 'umd']
-    },
-    // rollupOptions: {
-    //   // external: ['lit'],
-    //   output: {
-    //     globals: {
-    //       lit: 'lit'
-    //     }
-    //   }
-    // }
+    }
   },
   server: {
     port: 3000,
