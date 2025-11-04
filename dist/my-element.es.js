@@ -3,7 +3,7 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const M = globalThis, k = M.ShadowRoot && (M.ShadyCSS === void 0 || M.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, D = Symbol(), q = /* @__PURE__ */ new WeakMap();
+const M = globalThis, j = M.ShadowRoot && (M.ShadyCSS === void 0 || M.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, D = Symbol(), q = /* @__PURE__ */ new WeakMap();
 let tt = class {
   constructor(t, e, s) {
     if (this._$cssResult$ = !0, s !== D) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
@@ -12,7 +12,7 @@ let tt = class {
   get styleSheet() {
     let t = this.o;
     const e = this.t;
-    if (k && t === void 0) {
+    if (j && t === void 0) {
       const s = e !== void 0 && e.length === 1;
       s && (t = q.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && q.set(e, t));
     }
@@ -30,12 +30,12 @@ const nt = (r) => new tt(typeof r == "string" ? r : r + "", void 0, D), ht = (r,
   })(i) + r[o + 1]), r[0]);
   return new tt(e, r, D);
 }, at = (r, t) => {
-  if (k) r.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
+  if (j) r.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
   else for (const e of t) {
     const s = document.createElement("style"), i = M.litNonce;
     i !== void 0 && s.setAttribute("nonce", i), s.textContent = e.cssText, r.appendChild(s);
   }
-}, W = k ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
+}, W = j ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
   let e = "";
   for (const s of t.cssRules) e += s.cssText;
   return nt(e);
@@ -262,8 +262,8 @@ y.elementStyles = [], y.shadowRootOptions = { mode: "open" }, y[S("elementProper
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const z = globalThis, H = z.trustedTypes, Z = H ? H.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, et = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, st = "?" + f, mt = `<${st}>`, g = document, w = () => g.createComment(""), C = (r) => r === null || typeof r != "object" && typeof r != "function", I = Array.isArray, gt = (r) => I(r) || typeof r?.[Symbol.iterator] == "function", j = `[ 	
-\f\r]`, E = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, F = /-->/g, G = />/g, _ = RegExp(`>|${j}(?:([^\\s"'>=/]+)(${j}*=${j}*(?:[^ 	
+const z = globalThis, H = z.trustedTypes, Z = H ? H.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, et = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, st = "?" + f, mt = `<${st}>`, g = document, w = () => g.createComment(""), C = (r) => r === null || typeof r != "object" && typeof r != "function", I = Array.isArray, gt = (r) => I(r) || typeof r?.[Symbol.iterator] == "function", k = `[ 	
+\f\r]`, E = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, F = /-->/g, G = />/g, _ = RegExp(`>|${k}(?:([^\\s"'>=/]+)(${k}*=${k}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), Q = /'/g, X = /"/g, it = /^(?:script|style|textarea|title)$/i, yt = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), At = yt(1), v = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), Y = /* @__PURE__ */ new WeakMap(), m = g.createTreeWalker(g, 129);
 function rt(r, t) {
   if (!I(r) || !r.hasOwnProperty("raw")) throw Error("invalid template strings array");
@@ -572,8 +572,17 @@ let x = class extends A {
   }
   render() {
     return At`
-      <h1>Testing the panel</h1>
+      <slot></slot>
+      <div class="card">
+        <button @click=${this._onClick} part="button">
+          count is ${this.count}
+        </button>
+      </div>
+      <p class="read-the-docs">${this.docsHint}</p>
     `;
+  }
+  _onClick() {
+    this.count++;
   }
 };
 x.styles = ht`
