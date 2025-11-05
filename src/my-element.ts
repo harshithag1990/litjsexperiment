@@ -35,6 +35,9 @@ export class MyElement extends LitElement {
 
   private _onClick() {
     this.count++
+    this.dispatchEvent(
+      new CustomEvent('search-clicked', { detail: { value: this.count } })
+    );
   }
 
 
