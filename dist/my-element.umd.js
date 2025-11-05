@@ -32,7 +32,7 @@
         </button>
       </div>
       <p class="read-the-docs">${this.docsHint}</p>
-    `}_onClick(){this.count++}},u.MyElement.styles=ht`
+    `}_onClick(){this.count++,this.dispatchEvent(new CustomEvent("search-clicked",{detail:{value:this.count}}))}},u.MyElement.styles=ht`
     :host {
       max-width: 1280px;
       margin: 0 auto;

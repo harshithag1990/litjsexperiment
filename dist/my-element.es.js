@@ -582,7 +582,9 @@ let x = class extends A {
     `;
   }
   _onClick() {
-    this.count++;
+    this.count++, this.dispatchEvent(
+      new CustomEvent("search-clicked", { detail: { value: this.count } })
+    );
   }
 };
 x.styles = ht`
