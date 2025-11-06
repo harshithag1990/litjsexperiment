@@ -13,13 +13,7 @@ export class MyElement extends LitElement {
    * Copy for the read the docs hint.
    */
   @property()
-  placeholder = 'Click on the Vite and Lit logos to learn more'
-
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  count = 0
+  placeholder = ''
 
   @property()
   buttonLabel = 'Submit';
@@ -35,18 +29,10 @@ export class MyElement extends LitElement {
       />
       <button @click=${this.handleClick}>${this.buttonLabel}</button>
     `
-    //   <div class="card">
-    //     <button @click=${this._onClick} part="button">
-    //       count is ${this.count}
-    //     </button>
-    //   </div>
-    // `
   }
 
   private handleClick() {
-    console.log("button clicked----->");
     var self=this;
-    this.count++
     this.dispatchEvent(
       new CustomEvent('handle-button-click', { 
         detail: { textValue: self.textValue } 
@@ -56,10 +42,7 @@ export class MyElement extends LitElement {
 
   private handleInput(e: Event) {
     this.textValue = (e.target as HTMLInputElement).value;
-    console.log("value----->", this.textValue);
   }
-
-
 
   static styles = css`
     :host {
