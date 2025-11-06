@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>panel-testing</title>
     <link rel="stylesheet" href="./src/index.css" />
-    <script type="module" src="/src/my-element.ts"></script>
+    <script type="module" src="./dist/my-element.es.js"></script>
+    <script type="module" src="./dist/textbox.es.js"></script>
   </head>
   <body>
     
     <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
     </my-element>
     
-    
-  </body>
+    <my-textbox id="textbox" placeholder="Testing placeholder">
+    </my-textbox>
+  </body> 
   <script>
     const el = document.getElementById('request-panel');
     el.addEventListener('handle-button-click', (event) => {
