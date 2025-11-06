@@ -13,7 +13,7 @@ export class MyElement extends LitElement {
    * Copy for the read the docs hint.
    */
   @property()
-  docsHint = 'Click on the Vite and Lit logos to learn more'
+  placeholder = 'Click on the Vite and Lit logos to learn more'
 
   /**
    * The number of times the button has been clicked.
@@ -21,24 +21,44 @@ export class MyElement extends LitElement {
   @property({ type: Number })
   count = 0
 
+  @property()
+  buttonLabel = 'Submit';
+
+  textValue = '';
+
   render() {
     return html`
-      <slot></slot>
-      <div class="card">
-        <button @click=${this._onClick} part="button">
-          count is ${this.count}
-        </button>
-      </div>
-      <p class="read-the-docs">${this.docsHint}</p>
+      <input
+        type="text"
+        placeholder=${this.placeholder}
+        @input=${this.handleInput}
+      />
+      <button @click=${this.handleClick}>${this.buttonLabel}</button>
     `
+    //   <div class="card">
+    //     <button @click=${this._onClick} part="button">
+    //       count is ${this.count}
+    //     </button>
+    //   </div>
+    // `
   }
 
-  private _onClick() {
+  private handleClick() {
+    console.log("button clicked----->");
+    var self=this;
     this.count++
     this.dispatchEvent(
-      new CustomEvent('search-clicked', { detail: { value: this.count } })
+      new CustomEvent('handle-button-click', { 
+        detail: { textValue: self.textValue } 
+      })
     );
   }
+
+  private handleInput(e) {
+    this.textValue = e.target.value;
+    console.log("value----->", this.textValue);
+  }
+
 
 
   static styles = css`

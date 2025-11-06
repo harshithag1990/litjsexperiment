@@ -9,7 +9,17 @@
     <script type="module" src="/src/my-element.ts"></script>
   </head>
   <body>
-    <my-element>
+    
+    <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
     </my-element>
+    
+    
   </body>
+  <script>
+    const el = document.getElementById('request-panel');
+    el.addEventListener('handle-button-click', (event) => {
+      console.log("clicked----->");
+      console.log(event.detail.textValue);
+    });
+  </script>
 </html>
