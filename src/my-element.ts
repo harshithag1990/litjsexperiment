@@ -54,8 +54,8 @@ export class MyElement extends LitElement {
     );
   }
 
-  private handleInput(e) {
-    this.textValue = e.target.value;
+  private handleInput(e: Event) {
+    this.textValue = (e.target as HTMLInputElement).value;
     console.log("value----->", this.textValue);
   }
 
