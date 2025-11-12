@@ -103,13 +103,19 @@ export class ListWidget extends LitElement {
     :host {
       display: block;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
+      background: linear-gradient(135deg, #e8f4f8 0%, #f0e8f5 100%);
+      color: #2d2d2d;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
     }
 
     .widget-container {
       padding: 1.5rem;
       max-width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
     }
 
     .widget-header {
@@ -117,20 +123,29 @@ export class ListWidget extends LitElement {
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(138, 43, 226, 0.1);
     }
 
     .header-icon {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+      border-radius: 12px;
+      padding: 0.5rem;
+      box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2);
     }
 
     .header-title {
       margin: 0;
       font-size: 1.5rem;
       font-weight: 700;
-      color: #000000;
+      color: #6a1b9a;
+      letter-spacing: -0.02em;
     }
 
     .widget-content {
@@ -147,29 +162,39 @@ export class ListWidget extends LitElement {
 
     .section-title {
       margin: 0;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: #4a4a4a;
+      color: #8a2be2;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 0;
     }
 
     .items-list {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.5rem;
     }
 
     .item {
       display: flex;
       align-items: center;
       gap: 1rem;
+      padding: 0.625rem 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .item:hover {
+      opacity: 0.8;
     }
 
     .avatar {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
+      border: 2px solid rgba(138, 43, 226, 0.15);
     }
 
     .item-content {
@@ -180,34 +205,82 @@ export class ListWidget extends LitElement {
     }
 
     .item-name {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: #000000;
+      color: #2d2d2d;
+      letter-spacing: -0.01em;
     }
 
     .item-metadata {
-      font-size: 0.875rem;
-      color: #4a4a4a;
+      font-size: 0.8125rem;
+      color: #6b7280;
+      font-weight: 400;
     }
 
     .metadata-label {
       font-weight: 500;
+      color: #8a2be2;
     }
 
     @media (prefers-color-scheme: dark) {
       :host {
-        background-color: #1a1a1a;
-        color: #ffffff;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #e0e0e0;
       }
 
-      .header-title,
+      .widget-container {
+        background: rgba(30, 30, 46, 0.95);
+      }
+
+      .widget-header {
+        border-bottom-color: rgba(138, 43, 226, 0.3);
+      }
+
+      .header-title {
+        color: #b794f6;
+      }
+
+      .section-title {
+        color: #a78bfa;
+      }
+
+      .item {
+        /* No background or border for dark mode either */
+      }
+
+      .item:hover {
+        opacity: 0.8;
+      }
+
       .item-name {
-        color: #ffffff;
+        color: #e0e0e0;
       }
 
-      .section-title,
       .item-metadata {
-        color: #a0a0a0;
+        color: #9ca3af;
+      }
+
+      .metadata-label {
+        color: #a78bfa;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .widget-container {
+        padding: 1.25rem;
+      }
+
+      .header-title {
+        font-size: 1.25rem;
+      }
+
+      .item {
+        padding: 0.5rem 0;
+      }
+
+      .avatar {
+        width: 40px;
+        height: 40px;
       }
     }
   `
