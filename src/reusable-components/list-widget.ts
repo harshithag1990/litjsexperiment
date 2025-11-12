@@ -57,6 +57,7 @@ export class ListWidget extends LitElement {
   private renderSections() {
     console.log("render section--------->");
     console.log("sectionsInfo--------->", this.sectionsInfo);
+    console.log("sectionsInfo type--------->", typeof this.sectionsInfo);
     if(this.sectionsInfo !== "") {
         this.sections = JSON.parse(this.sectionsInfo);
     } else {
