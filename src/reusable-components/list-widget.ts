@@ -55,11 +55,13 @@ export class ListWidget extends LitElement {
   }
 
   private renderSections() {
+    console.log("render section--------->");
     if(this.sectionsInfo !== "") {
         this.sections = JSON.parse(this.sectionsInfo);
     } else {
         this.sections = [];
     }
+    console.log("sections--------->", this.sections);
     if (this.sections.length === 0) return html``
 
     return html`

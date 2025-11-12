@@ -587,7 +587,7 @@ let A = class extends b {
     ` : u``;
   }
   renderSections() {
-    return this.sectionsInfo !== "" ? this.sections = JSON.parse(this.sectionsInfo) : this.sections = [], this.sections.length === 0 ? u`` : u`
+    return console.log("render section--------->"), this.sectionsInfo !== "" ? this.sections = JSON.parse(this.sectionsInfo) : this.sections = [], console.log("sections--------->", this.sections), this.sections.length === 0 ? u`` : u`
       <div class="widget-content">
         ${this.sections.map((r) => this.renderSection(r))}
       </div>
