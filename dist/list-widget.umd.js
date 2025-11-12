@@ -34,7 +34,7 @@
         ${this.headerIcon?$`<span class="header-icon">${this.headerIcon}</span>`:""}
         <h2 class="header-title">${this.headerTitle}</h2>
       </div>
-    `:$`<div class="widget-header">No header title</div>`}renderSections(){return console.log("render section--------->"),this.sectionsInfo!==""?this.sections=JSON.parse(this.sectionsInfo):this.sections=[],console.log("sections--------->",this.sections),this.sections.length===0?$``:$`
+    `:$`<div class="widget-header">No header title</div>`}renderSections(){return console.log("render section--------->"),console.log("sectionsInfo--------->",this.sectionsInfo),this.sectionsInfo!==""?this.sections=JSON.parse(this.sectionsInfo):this.sections=[],console.log("sections--------->",this.sections),this.sections.length===0?$``:$`
       <div class="widget-content">
         ${this.sections.map(t=>this.renderSection(t))}
       </div>
