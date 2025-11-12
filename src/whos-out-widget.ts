@@ -1,0 +1,67 @@
+import { html, LitElement } from 'lit'
+import { customElement } from 'lit/decorators.js'
+import './reusable-components/list-widget.ts'
+import type { WidgetSection } from './reusable-components/list-widget.ts'
+
+@customElement('whos-out-widget')
+export class WhosOutWidget extends LitElement {
+  private sections: WidgetSection[] = [
+    {
+      title: 'This Week',
+      items: [
+        {
+          avatar: 'https://i.pravatar.cc/150?img=5',
+          name: 'Alice Johnson',
+          metadata: 'July 3rd'
+        },
+        {
+          avatar: 'https://i.pravatar.cc/150?img=6',
+          name: 'Charlie Brown',
+          metadata: 'July 5th'
+        },
+        {
+          avatar: 'https://i.pravatar.cc/150?img=7',
+          name: 'Bob Williams',
+          metadata: 'July 10th'
+        },
+        {
+          avatar: 'https://i.pravatar.cc/150?img=8',
+          name: 'Eve Davis',
+          metadata: 'July 12th'
+        },
+        {
+          avatar: 'https://i.pravatar.cc/150?img=9',
+          name: 'Frank White',
+          metadata: 'july 14th'
+        }
+      ]
+    }
+  ]
+
+  render() {
+    return html`
+      <list-widget
+        headerIcon="👥"
+        headerTitle="Who's Out"
+        .sections=${this.sections}
+        metadataLabel="Out until "
+      ></list-widget>
+    `
+  }
+}
+
+// At the end of my-element.ts, after the class definition
+export { LitElement } from 'lit';
+
+// Also expose it on the global MyElement object
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).MyElement = (globalThis as any).MyElement || {};
+  (globalThis as any).MyElement.LitElement = LitElement;
+}
+
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'whos-out-widget': WhosOutWidget
+  }
+}

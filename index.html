@@ -8,9 +8,24 @@
     <link rel="stylesheet" href="./src/index.css" />
     <script type="module" src="./dist/my-element.es.js"></script>
     <script type="module" src="./dist/textbox.es.js"></script>
+    <!-- Widget imports - for development, use src path; for production, use dist path -->
+    <script type="module" src="./src/upcoming-birthdays-widget.ts"></script>
+    <script type="module" src="./src/whos-out-widget.ts"></script>
   </head>
   <body>
+    <div style="display: flex; gap: 2rem; padding: 2rem; flex-wrap: wrap;">
+      <!-- Upcoming Birthdays Widget -->
+      <div style="flex: 1; min-width: 300px; max-width: 400px;">
+        <upcoming-birthdays-widget></upcoming-birthdays-widget>
+      </div>
+      
+      <!-- Who's Out Widget -->
+      <div style="flex: 1; min-width: 300px; max-width: 400px;">
+        <whos-out-widget></whos-out-widget>
+      </div>
+    </div>
     
+    <!-- Existing elements -->
     <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
     </my-element>
     
