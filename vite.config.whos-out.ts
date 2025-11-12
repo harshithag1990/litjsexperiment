@@ -4,9 +4,9 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     lib: {
-      entry: 'src/reusable-components/list-widget.ts',
-      name: 'ListWidget',
-      fileName: (format) => `list-widget.${format}.js`,
+      entry: 'src/whos-out-widget.ts',
+      name: 'WhosOut',
+      fileName: (format) => `whos-out-widget.${format}.js`,
       formats: ['es', 'umd']
     }
   }

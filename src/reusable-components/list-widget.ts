@@ -1,16 +1,6 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-
-export interface ListItem {
-  avatar: string
-  name: string
-  metadata: string
-}
-
-export interface WidgetSection {
-  title?: string
-  items: ListItem[]
-}
+import type { ListItem, WidgetSection } from '../assets/types.ts'
 
 /**
  * A reusable list widget component that displays items with avatars, names, and metadata.

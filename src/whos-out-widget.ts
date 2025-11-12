@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import './reusable-components/list-widget.ts'
-import type { WidgetSection } from './reusable-components/list-widget.ts'
+import '../dist/list-widget.umd.js'
+import type { WidgetSection } from './assets/types.ts'
 
 @customElement('whos-out-widget')
 export class WhosOutWidget extends LitElement {

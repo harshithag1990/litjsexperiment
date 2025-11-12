@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc &&  vite build --config vite.config.my-element.ts && vite build --config vite.config.textbox.ts && vite build --config vite.config.list-widget.ts",
+    "build": "tsc &&  vite build --config vite.config.my-element.ts && vite build --config vite.config.textbox.ts && vite build --config vite.config.list-widget.ts && vite build --config vite.config.upcoming-birthdays.ts && vite build --config vite.config.whos-out.ts",
     "preview": "vite preview"
   },
   "dependencies": {
