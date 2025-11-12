@@ -44,7 +44,7 @@ export class ListWidget extends LitElement {
   }
 
   private renderHeader() {
-    if (!this.headerTitle) return html``
+    if (!this.headerTitle) return html`<div class="widget-header">No header title</div>`
 
     return html`
       <div class="widget-header">
