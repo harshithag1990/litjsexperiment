@@ -23,14 +23,16 @@ export class ListWidget extends LitElement {
   /**
    * The sections data (array of sections with optional titles and items)
    */
-  @property({ type: Array })
-  sections: WidgetSection[] = []
+  @property()
+  sectionsInfo = ""
 
   /**
    * Optional: Label prefix for metadata (e.g., "Birthday:", "Out until:")
    */
   @property()
   metadataLabel = ''
+
+  sections = []
 
   render() {
     return html`
@@ -53,7 +55,12 @@ export class ListWidget extends LitElement {
   }
 
   private renderSections() {
-    if (!this.sections || this.sections.length === 0) return html``
+    if(this.sectionsInfo !== "") {
+        this.sections = JSON.parse(this.sectionsInfo);
+    } else {
+        this.sections = [];
+    }
+    if (this.sections.length === 0) return html``
 
     return html`
       <div class="widget-content">
