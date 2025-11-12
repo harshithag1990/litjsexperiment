@@ -33,7 +33,7 @@ export class UpcomingBirthdaysWidget extends LitElement {
           "avatar": "https://i.pravatar.cc/150?img=4",
           "name": "Gary Oldman",
           "metadata": "August 10th"
-        }
+        },
       ]
     }
   ]

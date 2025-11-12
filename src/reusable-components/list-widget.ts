@@ -101,7 +101,12 @@ export class ListWidget extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      min-width: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: linear-gradient(135deg, #e8f4f8 0%, #f0e8f5 100%);
       color: #2d2d2d;
@@ -111,11 +116,17 @@ export class ListWidget extends LitElement {
     }
 
     .widget-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: 100%;
       padding: 1.5rem;
-      max-width: 100%;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 16px;
       backdrop-filter: blur(10px);
+      box-sizing: border-box;
     }
 
     .widget-header {
@@ -125,6 +136,7 @@ export class ListWidget extends LitElement {
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+      flex-shrink: 0;
     }
 
     .header-icon {
@@ -138,6 +150,7 @@ export class ListWidget extends LitElement {
       border-radius: 12px;
       padding: 0.5rem;
       box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2);
+      flex-shrink: 0;
     }
 
     .header-title {
@@ -146,18 +159,50 @@ export class ListWidget extends LitElement {
       font-weight: 700;
       color: #6a1b9a;
       letter-spacing: -0.02em;
+      flex-shrink: 0;
     }
 
     .widget-content {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      flex: 0 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0.5rem;
+    }
+
+    /* Custom scrollbar styling */
+    .widget-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .widget-content::-webkit-scrollbar-track {
+      background: rgba(138, 43, 226, 0.05);
+      border-radius: 10px;
+    }
+
+    .widget-content::-webkit-scrollbar-thumb {
+      background: rgba(138, 43, 226, 0.3);
+      border-radius: 10px;
+    }
+
+    .widget-content::-webkit-scrollbar-thumb:hover {
+      background: rgba(138, 43, 226, 0.5);
+    }
+
+    /* Firefox scrollbar styling */
+    .widget-content {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(138, 43, 226, 0.3) rgba(138, 43, 226, 0.05);
     }
 
     .section {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      flex-shrink: 0;
     }
 
     .section-title {
@@ -168,6 +213,7 @@ export class ListWidget extends LitElement {
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 0.5rem 0;
+      flex-shrink: 0;
     }
 
     .items-list {
@@ -182,6 +228,7 @@ export class ListWidget extends LitElement {
       gap: 1rem;
       padding: 0.625rem 0;
       transition: opacity 0.2s ease;
+      flex-shrink: 0;
     }
 
     .item:hover {
@@ -202,6 +249,7 @@ export class ListWidget extends LitElement {
       flex-direction: column;
       gap: 0.25rem;
       flex: 1;
+      min-width: 0;
     }
 
     .item-name {
@@ -242,10 +290,6 @@ export class ListWidget extends LitElement {
 
       .section-title {
         color: #a78bfa;
-      }
-
-      .item {
-        /* No background or border for dark mode either */
       }
 
       .item:hover {
