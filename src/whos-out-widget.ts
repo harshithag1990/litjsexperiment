@@ -1,10 +1,11 @@
 import { html, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import './reusable-components/list-widget.ts'
+import type { WidgetSection } from './assets/types.ts'
 
 @customElement('whos-out-widget')
 export class WhosOutWidget extends LitElement {
-  private sections = JSON.stringify([
+  private sections: WidgetSection[] = [
     {
       title: 'This Week',
       items: [
@@ -35,14 +36,14 @@ export class WhosOutWidget extends LitElement {
         }
       ]
     }
-  ])
+  ]
 
   render() {
     return html`
       <list-widget
         headerIcon="👥"
         headerTitle="Who's Out"
-        sectionsInfo=${this.sections}
+        .sections=${this.sections}
         metadataLabel="Out until "
       ></list-widget>
     `
