@@ -1,27 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>panel-testing</title>
-    <link rel="stylesheet" href="./src/index.css" />
-    <script type="module" src="./dist/my-element.es.js"></script>
-    <script type="module" src="./dist/textbox.es.js"></script>
-  </head>
-  <body>
-    
-    <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
-    </my-element>
-    
-    <my-textbox id="textbox" placeholder="Testing placeholder">
-    </my-textbox>
-  </body> 
-  <script>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>panel-testing</title>
+  <link rel="stylesheet" href="./src/index.css" />
+  <script type="module" src="./dist/my-element.es.js"></script>
+  <script type="module" src="./dist/textbox.es.js"></script>
+  <script type="module" src="./dist/card-list.es.js"></script>
+</head>
+
+<body>
+
+  <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
+  </my-element>
+
+  <my-textbox id="textbox" placeholder="Testing placeholder">
+  </my-textbox>
+
+  <card-list title="Leave Balances" leaves='{"Sick Leaves": 10, "Casual": 9, "Vacation": 25}'>
+  </card-list>
+
+</body>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+
     const el = document.getElementById('request-panel');
-    el.addEventListener('handle-button-click', (event) => {
-      console.log("clicked----->");
-      console.log(event.detail.textValue);
-    });
-  </script>
+    if (el) {
+      el.addEventListener('handle-button-click', (event) => {
+        console.log("clicked----->");
+        console.log(event.detail.textValue);
+      });
+    }
+  });
+</script>
+
 </html>
