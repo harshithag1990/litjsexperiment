@@ -19,35 +19,26 @@
       <div style="width: 400px; max-height: 700px;">
         <upcoming-birthdays-widget></upcoming-birthdays-widget>
       </div>
-
+      
       <!-- Who's Out Widget -->
       <div style="width: 400px; max-height: 500px;">
         <whos-out-widget></whos-out-widget>
       </div>
-
-      <!-- Leave Balances Card List -->
-      <div style="width: 400px; max-height: 500px;">
-        <card-list title="Leave Balances" leaves='{"Sick Leaves": 10, "Casual": 9, "Vacation": 25}'></card-list>
-      </div>
     </div>
-
+    
     <!-- Existing elements -->
     <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
     </my-element>
-
+    
     <my-textbox id="textbox" placeholder="Testing placeholder">
     </my-textbox>
-  </body>
+    <card-list title="Leave Balances" leaves='{"Sick Leaves": 10, "Casual": 9, "Vacation": 25}'></card-list>
+  </body> 
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const el = document.getElementById('request-panel');
-      if (el) {
-        el.addEventListener('handle-button-click', (event) => {
-          console.log("clicked----->");
-          console.log(event.detail.textValue);
-        });
-      }
+    const el = document.getElementById('request-panel');
+    el.addEventListener('handle-button-click', (event) => {
+      console.log("clicked----->");
+      console.log(event.detail.textValue);
     });
-</script>
-
+  </script>
 </html>
