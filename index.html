@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/index.css" />
     <script type="module" src="./dist/my-element.es.js"></script>
     <script type="module" src="./dist/textbox.es.js"></script>
+    <script type="module" src="./dist/card-list.es.js"></script>
     <!-- Widget imports - for development, use src path; for production, use dist path -->
     <script type="module" src="./src/upcoming-birthdays-widget.ts"></script>
     <script type="module" src="./src/whos-out-widget.ts"></script>
@@ -31,6 +32,7 @@
     
     <my-textbox id="textbox" placeholder="Testing placeholder">
     </my-textbox>
+    <card-list title="Leave Balances" leaves='{"Sick Leaves": 10, "Casual": 9, "Vacation": 25}'></card-list>
   </body> 
   <script>
     const el = document.getElementById('request-panel');
