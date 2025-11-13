@@ -74,14 +74,19 @@ export class ListWidget extends LitElement {
   }
 
   private renderItem(item: ListItem) {
+    const hasAvatar = item.avatar && item.avatar.trim() !== ''
+    
     return html`
       <div class="item">
-        <img 
-          src=${item.avatar} 
-          alt=${item.name}
-          class="avatar"
-          @error=${this.handleImageError}
-        />
+        ${hasAvatar 
+          ? html`<img 
+              src=${item.avatar} 
+              alt=${item.name}
+              class="avatar"
+              @error=${this.handleImageError}
+            />`
+          : html`<div class="avatar avatar-initials">AB</div>`
+        }
         <div class="item-content">
           <div class="item-name">${item.name}</div>
           <div class="item-metadata">
@@ -244,6 +249,18 @@ export class ListWidget extends LitElement {
       border: 2px solid rgba(138, 43, 226, 0.15);
     }
 
+    .avatar-initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      object-fit: none;
+    }
+
     .item-content {
       display: flex;
       flex-direction: column;
@@ -325,6 +342,10 @@ export class ListWidget extends LitElement {
       .avatar {
         width: 40px;
         height: 40px;
+      }
+
+      .avatar-initials {
+        font-size: 0.8125rem;
       }
     }
   `

@@ -25,7 +25,7 @@ export class UpcomingBirthdaysWidget extends LitElement {
       "title": "Next Month (August)",
       "items": [
         {
-          "avatar": "https://i.pravatar.cc/150?img=3",
+          "avatar": "",
           "name": "Fiona Green",
           "metadata": "August 1st"
         },
