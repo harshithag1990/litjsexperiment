@@ -12,27 +12,37 @@ export class WhosOutWidget extends LitElement {
         {
           avatar: 'https://i.pravatar.cc/150?img=5',
           name: 'Alice Johnson',
+          firstName: 'Alice',
+          lastName: 'Johnson',
           metadata: 'July 3rd'
         },
         {
           avatar: 'https://i.pravatar.cc/150?img=6',
           name: 'Charlie Brown',
+          firstName: 'Charlie',
+          lastName: 'Brown',
           metadata: 'July 5th'
         },
         {
-          avatar: 'https://i.pravatar.cc/150?img=7',
+          avatar: '',
           name: 'Bob Williams',
+          firstName: 'Bob',
+          lastName: 'Williams',
           metadata: 'July 10th'
         },
         {
           avatar: 'https://i.pravatar.cc/150?img=8',
           name: 'Eve Davis',
+          firstName: 'Eve',
+          lastName: 'Davis',
           metadata: 'July 12th'
         },
         {
-          avatar: 'https://i.pravatar.cc/150?img=9',
+          avatar: '',
           name: 'Frank White',
-          metadata: 'july 14th'
+          firstName: 'Frank',
+          lastName: 'White',
+          metadata: 'July 14th'
         }
       ]
     }

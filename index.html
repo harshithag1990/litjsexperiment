@@ -11,6 +11,7 @@
     <!-- Widget imports - for development, use src path; for production, use dist path -->
     <script type="module" src="./src/upcoming-birthdays-widget.ts"></script>
     <script type="module" src="./src/whos-out-widget.ts"></script>
+    <script type="module" src="./src/celebrations-widget.ts"></script>
   </head>
   <body>
     <div style="display: flex; gap: 2rem; padding: 2rem; flex-wrap: wrap;">
@@ -22,6 +23,11 @@
       <!-- Who's Out Widget -->
       <div style="width: 400px; max-height: 500px;">
         <whos-out-widget></whos-out-widget>
+      </div>
+
+      <!-- Employee List Activity Widget -->
+      <div style="width: 400px; max-height: 500px;">
+        <celebrations-widget></celebrations-widget>
       </div>
     </div>
     
