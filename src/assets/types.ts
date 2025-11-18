@@ -3,7 +3,8 @@ export interface ListItem {
     name: string
     metadata: string
     firstName: string
-    lastName: string
+    lastName: string,
+    icon?: string
   }
   
   export interface WidgetSection {
