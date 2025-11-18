@@ -1,116 +1,116 @@
 import { html, LitElement, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import './reusable-components/field-list-widget.ts'
-import type { FieldItem } from './reusable-components/field-list-widget.ts'
+import type { FieldItem } from './assets/types.ts';
 
 @customElement('employee-details-widget')
 export class EmployeeDetailsWidget extends LitElement {
-  @property({ type: Boolean })
-  collapsed = false
+    @property({ type: Boolean })
+    collapsed = false
 
-  @property({ type: Object })
-  employeeData: {
-    manager?: string
-    location?: string
-    workPhone?: string
-    jobTitle?: string
-    workSchedule?: string
-    department?: string
-    email?: string
-    mobilePhone?: string
-    employmentType?: string
-    nickname?: string
-  } = {
-    manager: 'Maria Thompson',
-    location: 'Dallas Distribution Center, Building C',
-    workPhone: '+1 (214) 555-0182',
-    jobTitle: 'Forklift Operator',
-    workSchedule: 'Mon-Fri, 6:00 AM – 2:30 PM',
-    department: 'Warehouse Operations',
-    email: 'james.davis@nova.com',
-    mobilePhone: '+1 (214) 555-0198',
-    employmentType: 'Full-time',
-    nickname: 'JD'
-  }
+    @property({ type: Object })
+    employeeData: {
+        manager?: string
+        location?: string
+        workPhone?: string
+        jobTitle?: string
+        workSchedule?: string
+        department?: string
+        email?: string
+        mobilePhone?: string
+        employmentType?: string
+        nickname?: string
+    } = {
+            manager: 'Maria Thompson',
+            location: 'Dallas Distribution Center, Building C',
+            workPhone: '+1 (214) 555-0182',
+            jobTitle: 'Forklift Operator',
+            workSchedule: 'Mon-Fri, 6:00 AM – 2:30 PM',
+            department: 'Warehouse Operations',
+            email: 'james.davis@nova.com',
+            mobilePhone: '+1 (214) 555-0198',
+            employmentType: 'Full-time',
+            nickname: 'JD'
+        }
 
-  private fields: FieldItem[] = []
+    private fields: FieldItem[] = []
 
-  connectedCallback() {
-    super.connectedCallback()
-    this.updateFields()
-  }
-
-  updated(changedProperties: Map<string | number | symbol, unknown>) {
-    super.updated(changedProperties)
-    if (changedProperties.has('employeeData')) {
-      this.updateFields()
+    connectedCallback() {
+        super.connectedCallback()
+        this.updateFields()
     }
-  }
 
-  private updateFields() {
-    this.fields = [
-      {
-        label: 'Manager',
-        title: this.employeeData.manager || '',
-        // icon: '💼',
-        iconUrl: 'https://img.icons8.com/?size=100&id=11224&format=png&color=7950F2',
-        highlight: true
-      },
-      {
-        label: 'Location',
-        title: this.employeeData.location || '',
-        icon: '📍'
-      },
-      {
-        label: 'Work phone',
-        title: this.employeeData.workPhone || '',
-        icon: '📞'
-      },
-      {
-        label: 'Job Title',
-        title: this.employeeData.jobTitle || '',
-        icon: '💼'
-      },
-      {
-        label: 'Work Schedule',
-        title: this.employeeData.workSchedule || '',
-        icon: '📍'
-      },
-      {
-        label: 'Department',
-        title: this.employeeData.department || '',
-        icon: '💼'
-      },
-      {
-        label: 'Email',
-        title: this.employeeData.email || '',
-        icon: '✉️',
-        highlight: true
-      },
-      {
-        label: 'Mobile phone',
-        title: this.employeeData.mobilePhone || '',
-        icon: '📞'
-      },
-      {
-        label: 'Employment Type',
-        title: this.employeeData.employmentType || '',
-        icon: '💼'
-      },
-      {
-        label: 'Nickname',
-        title: this.employeeData.nickname || '',
-        icon: '🏷️'
-      }
-    ]
-  }
+    updated(changedProperties: Map<string | number | symbol, unknown>) {
+        super.updated(changedProperties)
+        if (changedProperties.has('employeeData')) {
+            this.updateFields()
+        }
+    }
 
-  private toggleCollapse() {
-    this.collapsed = !this.collapsed
-  }
+    private updateFields() {
+        this.fields = [
+            {
+                label: 'Manager',
+                title: this.employeeData.manager || '',
+                // icon: '💼',
+                iconUrl: 'https://img.icons8.com/?size=100&id=11224&format=png&color=7950F2',
+                highlight: true
+            },
+            {
+                label: 'Location',
+                title: this.employeeData.location || '',
+                icon: '📍'
+            },
+            {
+                label: 'Work phone',
+                title: this.employeeData.workPhone || '',
+                icon: '📞'
+            },
+            {
+                label: 'Job Title',
+                title: this.employeeData.jobTitle || '',
+                icon: '💼'
+            },
+            {
+                label: 'Work Schedule',
+                title: this.employeeData.workSchedule || '',
+                icon: '📍'
+            },
+            {
+                label: 'Department',
+                title: this.employeeData.department || '',
+                icon: '💼'
+            },
+            {
+                label: 'Email',
+                title: this.employeeData.email || '',
+                icon: '✉️',
+                highlight: true
+            },
+            {
+                label: 'Mobile phone',
+                title: this.employeeData.mobilePhone || '',
+                icon: '📞'
+            },
+            {
+                label: 'Employment Type',
+                title: this.employeeData.employmentType || '',
+                icon: '💼'
+            },
+            {
+                label: 'Nickname',
+                title: this.employeeData.nickname || '',
+                icon: '🏷️'
+            }
+        ]
+    }
 
-  render() {
-    return html`
+    private toggleCollapse() {
+        this.collapsed = !this.collapsed
+    }
+
+    render() {
+        return html`
       <div class="widget-container">
         <div class="widget-header" @click=${this.toggleCollapse}>
           <h2 class="header-title">Employee details</h2>
@@ -130,16 +130,15 @@ export class EmployeeDetailsWidget extends LitElement {
             />
           </svg>
         </div>
-        ${!this.collapsed ? html`
-          <div class="widget-content">
+        <div class="widget-content ${this.collapsed ? 'collapsed' : ''}">
             <field-list-widget .fields=${this.fields}></field-list-widget>
-          </div>
-        ` : ''}
-      </div>
-    `
-  }
+        </div>
 
-  static styles = css`
+
+    `
+    }
+
+    static styles = css`
     :host {
       display: block;
       width: 100%;
@@ -191,15 +190,44 @@ export class EmployeeDetailsWidget extends LitElement {
     .chevron-icon.collapsed {
       transform: rotate(180deg);
     }
+    
+    .widget-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;  /* prevents header from moving */
+    }
+
+    .widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;  /* keeps header fixed */
+    }
 
     .widget-content {
-      padding: 20px;
+    padding: 20px;
+    overflow: hidden;
+    max-height: 1000px;
+    transition: max-height 0.35s ease, padding 0.35s ease;
     }
-  `
+
+    .widget-content.collapsed {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    }
+
+    `
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'employee-details-widget': EmployeeDetailsWidget
-  }
+    interface HTMLElementTagNameMap {
+        'employee-details-widget': EmployeeDetailsWidget
+    }
 }

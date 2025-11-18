@@ -1,13 +1,7 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
-export interface FieldItem {
-  label: string
-  title: string
-  icon?: string
-  iconUrl?: string
-  highlight?: boolean
-}
+import type { FieldItem } from '../assets/types.ts'
 
 /**
  * A reusable field list widget component that displays fields with labels, values, and icons.
@@ -89,7 +83,7 @@ export class FieldListWidget extends LitElement {
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
+     margin-top: 10px;
     }
 
     .icon-emoji {

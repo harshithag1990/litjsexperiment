@@ -620,7 +620,7 @@ U.styles = lt`
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
+     margin-top: 10px;
     }
 
     .icon-emoji {
