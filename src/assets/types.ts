@@ -11,3 +11,11 @@ export interface ListItem {
     title?: string
     items: ListItem[]
   }
+
+  export interface FieldItem {
+    label: string
+    title: string
+    icon?: string
+    iconUrl?: string
+    highlight?: boolean
+  }

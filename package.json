@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc &&  vite build --config vite.config.list-widget.ts && vite build --config vite.config.employee-activity-list.ts",
+    "build": "tsc &&  vite build --config vite.config.list-widget.ts && vite build --config vite.config.employee-activity-list.ts && vite build --config vite.config.field-list-widget.ts",
     "preview": "vite preview"
   },
   "dependencies": {

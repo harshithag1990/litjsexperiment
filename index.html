@@ -13,21 +13,22 @@
     <script type="module" src="./src/whos-out-widget.ts"></script>
     <script type="module" src="./src/celebrations-widget.ts"></script>
     <script type="module" src="./src/holidays-widget.ts"></script>
+    <script type="module" src="./src/employee-details-widget.ts"></script>
   </head>
   <body>
     <div style="display: flex; gap: 2rem; padding: 2rem; flex-wrap: wrap;">
       <!-- Upcoming Birthdays Widget -->
-      <div style="width: 400px; max-height: 700px;">
+      <!-- <div style="width: 400px; max-height: 700px;">
         <upcoming-birthdays-widget></upcoming-birthdays-widget>
-      </div>
+      </div> -->
       
       <!-- Who's Out Widget -->
-      <div style="width: 400px; max-height: 500px;">
+      <!-- <div style="width: 400px; max-height: 500px;">
         <whos-out-widget></whos-out-widget>
-      </div>
+      </div> -->
 
       <!-- Employee List Activity Widget -->
-      <div style="width: 400px; max-height: 500px;">
+      <!-- <div style="width: 400px; max-height: 500px;">
         <celebrations-widget></celebrations-widget>
       </div>
 
@@ -38,11 +39,16 @@
     </div>
     
     <!-- Existing elements -->
-    <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
+    <!-- <my-element id="request-panel" placeholder="Testing placeholder" buttonLabel="Testing button">
     </my-element>
     
     <my-textbox id="textbox" placeholder="Testing placeholder">
-    </my-textbox>
+    </my-textbox> -->
+
+    <!-- Employee details Widget -->
+    <div style="width: 600px;">
+      <employee-details-widget></employee-details-widget>
+    </div>
   </body> 
   <script>
     const el = document.getElementById('request-panel');
