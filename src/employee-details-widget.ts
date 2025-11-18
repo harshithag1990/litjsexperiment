@@ -8,6 +8,10 @@ export class EmployeeDetailsWidget extends LitElement {
 
   @property({ type: Boolean }) collapsed = false
 
+  /** NEW PROPS */
+  @property({ type: String }) headerTitle = 'Employee details'
+  @property({ type: String }) headerIcon: string = '👤'
+
   private fields: FieldItem[] = [
     {
       label: 'Manager',
@@ -30,6 +34,18 @@ export class EmployeeDetailsWidget extends LitElement {
     this.collapsed = !this.collapsed
   }
 
+  /** RENDER ICON: emoji OR url */
+  private renderHeaderIcon() {
+    // If it's a full URL, render an <img>
+    if (this.headerIcon?.startsWith('http')) {
+      return html`
+        <img src="${this.headerIcon}" alt="header icon" class="header-img-icon" />
+      `
+    }
+    // Otherwise render text/emoji
+    return html`<span class="header-icon">${this.headerIcon}</span>`
+  }
+
   render() {
     return html`
       <div class="widget-container">
@@ -37,23 +53,18 @@ export class EmployeeDetailsWidget extends LitElement {
         <!-- Header -->
         <div class="widget-header" @click=${this.toggleCollapse}>
           <span class="header-left">
-            <span class="header-icon">👤</span>
-            <span class="header-title">Employee details</span>
+            ${this.renderHeaderIcon()}
+            <span class="header-title">${this.headerTitle}</span>
           </span>
 
           <svg 
             class="chevron-icon ${this.collapsed ? 'collapsed' : ''}" 
-            width="20" 
-            height="20" 
-            viewBox="0 0 20 20" 
-            fill="none"
+            width="20" height="20" viewBox="0 0 20 20" fill="none"
           >
             <path 
               d="M5 12.5L10 7.5L15 12.5" 
-              stroke="currentColor" 
-              stroke-width="2" 
-              stroke-linecap="round" 
-              stroke-linejoin="round"
+              stroke="currentColor" stroke-width="2" 
+              stroke-linecap="round" stroke-linejoin="round"
             />
           </svg>
         </div>
@@ -74,7 +85,6 @@ export class EmployeeDetailsWidget extends LitElement {
       font-family: 'Inter', sans-serif;
     }
 
-    /* Card */
     .widget-container {
       background: #ffffff;
       border-radius: 12px;
@@ -85,7 +95,6 @@ export class EmployeeDetailsWidget extends LitElement {
       width: 100%;
     }
 
-    /* Header */
     .widget-header {
       display: flex;
       align-items: center;
@@ -112,24 +121,29 @@ export class EmployeeDetailsWidget extends LitElement {
       font-size: 18px;
     }
 
+    .header-img-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
     .header-title {
       font-size: 16px;
       font-weight: 600;
       color: #111827;
     }
 
-    /* Chevron */
     .chevron-icon {
       width: 20px;
       height: 20px;
       color: #6b7280;
       transition: transform 0.25s ease;
     }
+
     .chevron-icon.collapsed {
       transform: rotate(180deg);
     }
 
-    /* Collapse animation */
     .widget-content {
       padding: 20px;
       overflow: hidden;
@@ -145,7 +159,6 @@ export class EmployeeDetailsWidget extends LitElement {
   `
 }
 
-// export pattern
 export { LitElement } from 'lit'
 
 if (typeof globalThis !== 'undefined') {
