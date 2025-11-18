@@ -3,11 +3,11 @@ import { customElement, property } from 'lit/decorators.js'
 import type { ListItem, WidgetSection } from '../assets/types.ts'
 
 /**
- * A reusable list widget component that displays items with avatars, names, and metadata.
- * Can be used for various widgets like "Upcoming Birthdays" or "Who's Out".
+ * A reusable list widget component with green theme and icons support.
+ * Designed for celebrations and activity widgets.
  */
-@customElement('list-widget')
-export class ListWidget extends LitElement {
+@customElement('employee-activity-list')
+export class ListWidget2 extends LitElement {
   /**
    * The header icon (can be emoji, SVG, or text)
    */
@@ -25,12 +25,6 @@ export class ListWidget extends LitElement {
    */
   @property({ type: Array })
   sections: WidgetSection[] = []
-
-  /**
-   * Optional: Label prefix for metadata (e.g., "Birthday:", "Out until:")
-   */
-  @property()
-  metadataLabel = ''
 
   render() {
     return html`
@@ -109,17 +103,17 @@ export class ListWidget extends LitElement {
         <div class="item-content">
           <div class="item-name">${item.name}</div>
           <div class="item-metadata">
-            ${this.metadataLabel ? html`<span class="metadata-label">${this.metadataLabel}</span>` : ''}
             ${item.metadata}
           </div>
         </div>
+        ${item.icon ? html`<div class="item-icon">${item.icon}</div>` : ''}
       </div>
     `
   }
 
   private handleImageError(e: Event) {
     const img = e.target as HTMLImageElement
-    // Fallback to a placeholder or hide the image
+    // Fallback to initials or default avatar
     img.style.display = 'none'
   }
 
@@ -132,10 +126,10 @@ export class ListWidget extends LitElement {
       max-height: 100%;
       min-width: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, #e8f4f8 0%, #f0e8f5 100%);
-      color: #2d2d2d;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      color: #1f2937;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
       overflow: hidden;
     }
 
@@ -146,10 +140,9 @@ export class ListWidget extends LitElement {
       height: auto;
       min-height: 0;
       max-height: 100%;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
+      padding: 1.25rem;
+      background: #ffffff;
+      border-radius: 12px;
       box-sizing: border-box;
     }
 
@@ -157,44 +150,37 @@ export class ListWidget extends LitElement {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       flex-shrink: 0;
     }
 
     .header-icon {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
-      border-radius: 12px;
-      padding: 0.5rem;
-      box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2);
       flex-shrink: 0;
     }
 
     .header-title {
       margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.25rem;
+      font-weight: 600;
       color: #6a1b9a;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       flex-shrink: 0;
     }
 
     .widget-content {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 0;
       flex: 0 1 auto;
       min-height: 0;
       overflow-y: auto;
       overflow-x: hidden;
-      padding-right: 0.5rem;
     }
 
     /* Custom scrollbar styling */
@@ -203,69 +189,74 @@ export class ListWidget extends LitElement {
     }
 
     .widget-content::-webkit-scrollbar-track {
-      background: rgba(138, 43, 226, 0.05);
+      background: rgba(0, 0, 0, 0.05);
       border-radius: 10px;
     }
 
     .widget-content::-webkit-scrollbar-thumb {
-      background: rgba(138, 43, 226, 0.3);
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
 
     .widget-content::-webkit-scrollbar-thumb:hover {
-      background: rgba(138, 43, 226, 0.5);
+      background: rgba(0, 0, 0, 0.3);
     }
 
     /* Firefox scrollbar styling */
     .widget-content {
       scrollbar-width: thin;
-      scrollbar-color: rgba(138, 43, 226, 0.3) rgba(138, 43, 226, 0.05);
+      scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
     }
 
     .section {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0;
       flex-shrink: 0;
     }
 
     .section-title {
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 0.875rem;
       font-weight: 600;
-      color: #8a2be2;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.5rem 0;
+      color: #6b7280;
+      text-transform: none;
+      letter-spacing: 0;
+      padding: 0 0 0.75rem 0;
       flex-shrink: 0;
     }
 
     .items-list {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0;
+    }
+
+    .items-list .item:last-child {
+      border-bottom: none;
     }
 
     .item {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 0.625rem 0;
-      transition: opacity 0.2s ease;
+      gap: 0.75rem;
+      padding: 0.875rem 0;
+      transition: background-color 0.15s ease;
       flex-shrink: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .item:hover {
-      opacity: 0.8;
+      background-color: rgba(0, 0, 0, 0.02);
     }
 
     .avatar {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
-      border: 2px solid rgba(138, 43, 226, 0.15);
+      border: none;
     }
 
     .avatar-initials {
@@ -290,8 +281,8 @@ export class ListWidget extends LitElement {
     }
 
     .avatar-default svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
 
     .item-content {
@@ -303,9 +294,9 @@ export class ListWidget extends LitElement {
     }
 
     .item-name {
-      font-size: 0.95rem;
+      font-size: 0.9375rem;
       font-weight: 600;
-      color: #2d2d2d;
+      color: #1f2937;
       letter-spacing: -0.01em;
     }
 
@@ -313,25 +304,46 @@ export class ListWidget extends LitElement {
       font-size: 0.8125rem;
       color: #6b7280;
       font-weight: 400;
+      line-height: 1.4;
     }
 
-    .metadata-label {
-      font-weight: 500;
+    .item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
       color: #8a2be2;
+    }
+
+    .item-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .item-icon svg path,
+    .item-icon svg circle,
+    .item-icon svg rect,
+    .item-icon svg polygon,
+    .item-icon svg line {
+      fill: #8a2be2;
+      stroke: #8a2be2;
     }
 
     @media (prefers-color-scheme: dark) {
       :host {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        background: #1f2937;
         color: #e0e0e0;
       }
 
       .widget-container {
-        background: rgba(30, 30, 46, 0.95);
+        background: #1f2937;
       }
 
       .widget-header {
-        border-bottom-color: rgba(138, 43, 226, 0.3);
+        border-bottom-color: rgba(255, 255, 255, 0.1);
       }
 
       .header-title {
@@ -339,11 +351,15 @@ export class ListWidget extends LitElement {
       }
 
       .section-title {
-        color: #a78bfa;
+        color: #9ca3af;
+      }
+
+      .item {
+        border-bottom-color: rgba(255, 255, 255, 0.1);
       }
 
       .item:hover {
-        opacity: 0.8;
+        background-color: rgba(255, 255, 255, 0.05);
       }
 
       .item-name {
@@ -353,28 +369,24 @@ export class ListWidget extends LitElement {
       .item-metadata {
         color: #9ca3af;
       }
-
-      .metadata-label {
-        color: #a78bfa;
-      }
     }
 
     @media (max-width: 768px) {
       .widget-container {
-        padding: 1.25rem;
+        padding: 1rem;
       }
 
       .header-title {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
       }
 
       .item {
-        padding: 0.5rem 0;
+        padding: 0.75rem 0;
       }
 
       .avatar {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
       }
 
       .avatar-initials {
@@ -382,8 +394,8 @@ export class ListWidget extends LitElement {
       }
 
       .avatar-default svg {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
       }
     }
   `
@@ -398,9 +410,8 @@ if (typeof globalThis !== 'undefined') {
   (globalThis as any).MyElement.LitElement = LitElement;
 }
 
-
 declare global {
   interface HTMLElementTagNameMap {
-    'list-widget': ListWidget
+    'list-widget2': ListWidget2
   }
 }

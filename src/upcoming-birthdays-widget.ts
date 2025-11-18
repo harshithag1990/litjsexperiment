@@ -12,11 +12,15 @@ export class UpcomingBirthdaysWidget extends LitElement {
         {
           "avatar": "https://i.pravatar.cc/150?img=1",
           "name": "Diana Smith",
+          "firstName": "Diana",
+          "lastName": "Smith",
           "metadata": "July 5th"
         },
         {
           "avatar": "https://i.pravatar.cc/150?img=2",
           "name": "Ethan Hunt",
+          "firstName": "Ethan",
+          "lastName": "Hunt",
           "metadata": "July 8th"
         }
       ]
@@ -25,15 +29,26 @@ export class UpcomingBirthdaysWidget extends LitElement {
       "title": "Next Month (August)",
       "items": [
         {
-          "avatar": "https://i.pravatar.cc/150?img=3",
+          "avatar": "",
           "name": "Fiona Green",
+          "firstName": "Fiona",
+          "lastName": "Green",
           "metadata": "August 1st"
         },
         {
           "avatar": "https://i.pravatar.cc/150?img=4",
           "name": "Gary Oldman",
+          "firstName": "Gary",
+          "lastName": "Oldman",
           "metadata": "August 10th"
         },
+        {
+          "avatar": "",
+          "name": "Helen Parker",
+          "firstName": "Helen",
+          "lastName": "Parker",
+          "metadata": "August 15th"
+        }
       ]
     }
   ]
