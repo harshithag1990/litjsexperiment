@@ -12,7 +12,7 @@ export class EmployeeDetailsWidget extends LitElement {
   @property({ type: String }) headerTitle = 'Employee details'
   @property({ type: String }) headerIcon: string = '👤'
 
-  private fields: FieldItem[] = [
+  @property({ type: Array }) fields: FieldItem[] = [
     {
       label: 'Manager',
       title: 'Maria Thompson',
