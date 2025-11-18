@@ -17,10 +17,10 @@ export class EmployeeListActivityWidget extends LitElement {
           icon: '🎂'
         },
         {
-          avatar: 'https://i.pravatar.cc/150?img=11',
+          avatar: '',
           name: 'Panda Bear',
-          firstName: 'Panda',
-          lastName: 'Bear',
+          firstName: '',
+          lastName: '',
           metadata: 'October 18 - 6th Anniversary',
           icon: '📅'
         },

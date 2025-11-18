@@ -79,26 +79,29 @@ export class ListWidget2 extends LitElement {
   }
 
   private renderItem(item: ListItem) {
-    const hasAvatar = item.avatar && item.avatar.trim() !== ''
+    const avatarExists = 'avatar' in item && item.avatar !== undefined && item.avatar !== null
+    const hasAvatarUrl = avatarExists && item.avatar && item.avatar.trim() !== ''
     const initials = this.getInitials(item)
     
     return html`
       <div class="item">
-        ${hasAvatar 
+        ${hasAvatarUrl 
           ? html`<img 
               src=${item.avatar} 
               alt=${item.name}
               class="avatar"
               @error=${this.handleImageError}
             />`
-          : initials
-            ? html`<div class="avatar avatar-initials">${initials}</div>`
-            : html`<div class="avatar avatar-default">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
-                  <path d="M12 14C7.58172 14 4 16.6863 4 20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20C20 16.6863 16.4183 14 12 14Z" fill="currentColor"/>
-                </svg>
-              </div>`
+          : !avatarExists && this.headerIcon
+            ? html`<div class="avatar avatar-icon">${this.headerIcon}</div>`
+            : initials
+              ? html`<div class="avatar avatar-initials">${initials}</div>`
+              : html`<div class="avatar avatar-default">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+                    <path d="M12 14C7.58172 14 4 16.6863 4 20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20C20 16.6863 16.4183 14 12 14Z" fill="currentColor"/>
+                  </svg>
+                </div>`
         }
         <div class="item-content">
           <div class="item-name">${item.name}</div>
@@ -268,6 +271,16 @@ export class ListWidget2 extends LitElement {
       font-weight: 600;
       font-size: 0.875rem;
       letter-spacing: 0.02em;
+      object-fit: none;
+    }
+
+    .avatar-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+      color: white;
+      font-size: 1.25rem;
       object-fit: none;
     }
 
