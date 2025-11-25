@@ -101,6 +101,12 @@ export class UserAvatar extends LitElement {
   }
 }
 
+export { LitElement };
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).MyElement = (globalThis as any).MyElement || {};
+  (globalThis as any).MyElement.LitElement = LitElement;
+}
+
 declare global {
   interface HTMLElementTagNameMap {
     'user-avatar': UserAvatar
